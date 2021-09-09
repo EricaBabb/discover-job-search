@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: solid red 4px; */
+  /* color: #3b3939 !important; */
+  text-decoration: none !important;
+}
+
+/* Colors */
+:root {
+  --orange: #dd6830;
+  --dark-brown: #37240e;
+}
+/* Common Fonts */
+
+@font-face {
+  font-family: Ethnocentric;
+  src: url(./EthnocentricItalic.otf);
+}
+
+@font-face {
+  font-family: Eurostile;
+  src: url(./Eurostile.otf);
+}
+.orange {
+  color: var(--orange) !important;
+}
+.black {
+  color: black !important;
+}
+
+/* Header */
+.center {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 60px;
+  font-family: Ethnocentric;
+}
+
+nav {
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-family: Eurostile;
+}
+
+.welcome {
+  position: absolute;
+  font-size: 30px;
+  margin-top: -20px;
+  margin-left: -110px;
+  font-family: Eurostile;
+}
+
+.nav-links {
+  margin-top: 20px;
+}
+
+nav a:hover {
+  color: var(--orange) !important;
+}
+
+/* Body */
+.reg-font-color {
+  font-family: Eurostile;
+  color: black;
+}
+.space {
+  padding-left: 15px;
+}
+.body-text {
+  font-size: 45px;
+  margin: 120px 40px 60px 40px;
+}
+
+.page-title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.sub-title {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.body-text2 {
+  font-size: 45px;
+  margin-top: 100px;
+  margin-bottom: -8px;
+}
+/* .body-text3 {
+  font-size: 35px;
+  font-family: Whomp;
+  color: var(--pink);
+} */
+
+.no-border {
+  border: none;
+}
+
+/* Contact */
+
+form {
+  margin-left: 50px;
+}
+.form-label {
+  font-size: 25px;
+}
+
+.field-form {
+  width: 40%;
+}
+
+.form-select {
+  width: 180%;
+  font-family: Eurostile;
+  color: black;
+}
+.label-center {
+  display: flex;
+  justify-content: center;
+  margin-left: -35vw;
+}
+
+.form-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.my-btn {
+  font-family: Ethnocentric;
+  font-size: 25px;
+  color: white;
+  background-color: black;
+  margin-top: 30px;
+}
+
+.my-btn:hover {
+  opacity: 0.75;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}

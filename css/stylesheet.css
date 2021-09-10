@@ -118,6 +118,10 @@ form {
   width: 40%;
 }
 
+.form-width {
+  width: 30%;
+}
+
 .form-select {
   width: 180%;
   font-family: Eurostile;
@@ -138,6 +142,7 @@ form {
   font-family: Ethnocentric;
   font-size: 25px;
   background-color: black;
+  color: white;
   margin-top: 30px;
 }
 

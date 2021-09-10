@@ -10,7 +10,6 @@
 /* Colors */
 :root {
   --orange: #dd6830;
-  --dark-brown: #37240e;
 }
 /* Common Fonts */
 
@@ -28,6 +27,13 @@
 }
 .black {
   color: black !important;
+}
+
+body {
+  background-image: url("/assets/images/world.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 /* Header */
@@ -84,8 +90,8 @@ nav a:hover {
 }
 
 .sub-title {
-  font-size: 38px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 60px;
 }
 
 .body-text2 {
@@ -99,11 +105,7 @@ nav a:hover {
   color: var(--pink);
 } */
 
-.no-border {
-  border: none;
-}
-
-/* Contact */
+/* Search */
 
 form {
   margin-left: 50px;
@@ -135,24 +137,60 @@ form {
 .my-btn {
   font-family: Ethnocentric;
   font-size: 25px;
-  color: white;
   background-color: black;
   margin-top: 30px;
+}
+
+.my-btn a {
+  color: white !important;
 }
 
 .my-btn:hover {
   opacity: 0.75;
 }
 
-/* Footer */
+/* Cards */
 
-footer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 10px;
+.card {
+  max-width: 600px !important;
+  max-height: 400px !important;
 }
 
-.icon {
-  height: 40px;
-  width: 40px;
+.border {
+  border: 1px solid var(--orange) !important;
+}
+
+.card-title {
+  display: flex;
+  font-size: 35px;
+  justify-content: space-between;
+}
+
+svg {
+  height: 35px;
+  width: 35px;
+}
+
+.card-body h6 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.card-body label {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.form-check-input {
+  position: relative !important;
+  height: 20px;
+  width: 20px;
+}
+
+.card-body h6 a {
+  color: black;
+}
+
+.card-body h6 a:hover {
+  color: var(--orange);
 }

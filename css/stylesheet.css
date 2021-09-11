@@ -153,6 +153,17 @@ form {
 .my-btn:hover {
   opacity: 0.75;
 }
+#split {
+  display: flex;
+}
+
+.absolute {
+  position: absolute;
+  margin-left: 50%;
+  margin-top: -20%;
+  margin-right: 10%;
+  font-size: 50px;
+}
 
 /* Cards */
 

@@ -22,9 +22,8 @@ module.exports = {
     if (!token) {
       return res.status(400).json({ message: 'You have no token!' });
     }
-    // verify token and get user data out of it
+    // Verify the token and get the user data
     try {
-    // decode and attach user data to request object
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch {
@@ -32,7 +31,7 @@ module.exports = {
       return res.status(400).json({ message: 'invalid token!' });
     }
 
-    // send to next endpoint
+    // Send to end/break
     next();
   },
   signToken: function({ username, email, _id }) {
@@ -40,7 +39,4 @@ module.exports = {
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   }
-};
-
-//If the secret on jwt.verify() doesn't match the secret that was used with jwt.sign(), the object won't be decoded. When the JWT verification fails, an error is thrown.
-//We don't want an error thrown on every request, though. Users with an invalid token should still be able to request and see all thoughts. Thus, we wrapped the verify() method in a try...catch statement to mute the error. We'll manually throw an authentication error on the resolver side when the need arises.
+}; 

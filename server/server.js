@@ -10,7 +10,6 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-async function startExpressApolloServer() {
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
   typeDefs,
@@ -18,12 +17,16 @@ const server = new ApolloServer({
   context: authMiddleware
 });
 
+async function startExpressApolloServer(typeDefs, resolvers) {
 await server.start();
-
 // integrate our Apollo server with the Express application as middleware
-server.applyMiddleware({ app });
+await server.applyMiddleware({ 
+  app });
+}
 
-app.use(express.urlencoded({ extended: false }));
+startApolloServer(typeDefs, resolvers);
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets
@@ -45,6 +48,6 @@ db.once('open', () => {
     //the /graphql endpoint also has a built-in testing tool we can use
   });
 });
-}
+
 startExpressApolloServer();
 //Start server with npm run watch

@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import jobSearch from './jobSearch';
+// import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>,
+  document.getElementById('root'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  export default function Indeed(url = 'http://api.indeed.com/ads', publisherId) {
+  if (!publisherId) {
+    throw Error('An Indeed publisher id is required');
+  } else {
+    return {
+      jobSearch: () => new jobSearch(url, publisherId)
+    };
+  }
+}
+
+
+// reportWebVitals();

@@ -1,13 +1,212 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  /* border: solid red 4px; */
+  /* color: #3b3939 !important; */
+  text-decoration: none !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Colors */
+:root {
+  --orange: #dd6830;
+}
+/* Common Fonts */
+
+@font-face {
+  font-family: Ethnocentric;
+  src: url(./EthnocentricItalic.otf);
+}
+
+@font-face {
+  font-family: Eurostile;
+  src: url(./Eurostile.otf);
+}
+.orange {
+  color: var(--orange) !important;
+}
+.black {
+  color: black !important;
+}
+
+body {
+  background-image: url("/assets/images/world.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Header */
+.center {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 60px;
+  font-family: Ethnocentric;
+}
+
+nav {
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-family: Eurostile;
+}
+
+.welcome {
+  position: absolute;
+  font-size: 30px;
+  margin-top: -20px;
+  margin-left: -110px;
+  font-family: Eurostile;
+}
+
+.nav-links {
+  margin-top: 20px;
+}
+
+nav a:hover {
+  color: var(--orange) !important;
+}
+
+/* Body */
+.reg-font-color {
+  font-family: Eurostile;
+  color: black;
+}
+.space {
+  padding-left: 15px;
+}
+.body-text {
+  font-size: 45px;
+  margin: 120px 40px 60px 40px;
+}
+
+.page-title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.sub-title {
+  font-size: 40px;
+  margin-bottom: 60px;
+}
+
+.body-text2 {
+  font-size: 45px;
+  margin-top: 100px;
+  margin-bottom: -8px;
+}
+/* .body-text3 {
+  font-size: 35px;
+  font-family: Whomp;
+  color: var(--pink);
+} */
+
+/* Search */
+
+form {
+  margin-left: 50px;
+}
+.form-label {
+  font-size: 25px;
+}
+
+.field-form {
+  width: 40%;
+}
+
+.form-width {
+  width: 30%;
+}
+
+.form-select {
+  width: 180%;
+  font-family: Eurostile;
+  color: black;
+}
+.label-center {
+  display: flex;
+  justify-content: center;
+  margin-left: -35vw;
+}
+
+.form-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.my-btn {
+  font-family: Ethnocentric;
+  font-size: 25px;
+  background-color: black;
+  color: white;
+  margin-top: 30px;
+}
+
+.my-btn a {
+  color: white !important;
+}
+
+.my-btn:hover {
+  opacity: 0.75;
+}
+#split {
+  display: flex;
+}
+
+.absolute {
+  position: absolute;
+  margin-left: 50%;
+  margin-top: -20%;
+  margin-right: 10%;
+  font-size: 50px;
+}
+
+/* Cards */
+
+.card {
+  max-width: 600px !important;
+  max-height: 400px !important;
+}
+
+.border {
+  border: 1px solid var(--orange) !important;
+}
+
+.card-title {
+  display: flex;
+  font-size: 35px;
+  justify-content: space-between;
+}
+
+svg {
+  height: 35px;
+  width: 35px;
+}
+
+.card-body h6 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.card-body label {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.form-check-input {
+  position: relative !important;
+  height: 20px;
+  width: 20px;
+}
+
+.card-body h6 a {
+  color: black;
+}
+
+.card-body h6 a:hover {
+  color: var(--orange);
 }

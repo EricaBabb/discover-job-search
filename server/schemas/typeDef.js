@@ -6,7 +6,6 @@ const typeDefs = gql`
         authors: [String]
         description: String
         JobId: String
-        image: String
         link: String
         title: String
     }

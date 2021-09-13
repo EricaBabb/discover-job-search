@@ -21,15 +21,17 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    // set savedJobs to be an array of data that adheres to the jobSchema
     savedJobs: [jobSchema],
   },
+  // set this to use virtuals below
   {
     toJSON: {
       virtuals: true,
     },
   }
 );
-
+// hash user password
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -39,14 +41,6 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-
-userSchema.virtual('jobCount').get(function () {
-  return this.savedJobs.length;
-});
 
 const User = model('User', userSchema);
 

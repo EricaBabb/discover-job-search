@@ -2,32 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
-import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
+import { saveJob, searchGoogleJobs } from '../utils/API';
+import { saveJobIds, getSavedJobIds } from '../utils/localStorage';
 // Import SAVE_JOB mutation
-import { SAVE_BOOK } from '../utils/mutations';
+import { SAVE_JOB } from '../utils/mutations';
 // Import useMutation hook from apollo
 import {useMutation, useQuery}  from '@apollo/client';
 
-const SearchBooks = () => {
+const SearchJobs = () => {
     // create state for holding returned google api data
-    const [searchedBooks, setSearchedBooks] = useState([]);
+    const [searchedJobs, setSearchedJobs] = useState([]);
     // create state for holding our search field data
     const [searchInput, setSearchInput] = useState('');
   
-    // create state to hold saved bookId values
-    const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+    // create state to hold saved jobId values
+    const [savedJobIds, setSavedJobIds] = useState(getSavedJobIds());
   
     //Imported mutation
-    const [saveBook] = useMutation(SAVE_BOOK);
+    const [saveJob] = useMutation(SAVE_JOB);
   
-    // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+    // set up useEffect hook to save `savedJobIds` list to localStorage on component unmount
     // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
     useEffect(() => {
-      return () => saveBookIds(savedBookIds);
+      return () => saveJobIds(savedJobIds);
     });
   
-    // create method to search for books and set state on form submit
+    // create method to search for jobs and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -36,7 +36,7 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await searchGoogleBooks(searchInput);
+      const response = await searchJobs(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -44,25 +44,25 @@ const SearchBooks = () => {
 
       const { items } = await response.json();
 
-      const bookData = items.map((book) => ({
-        bookId: book.id,
-        authors: book.volumeInfo.authors || ['No author'],
-        title: book.volumeInfo.title,
-        description: book.volumeInfo.description,
-        image: book.volumeInfo.imageLinks?.thumbnail || '',
-      }));
+      const jobData = items.map((job => ({
+        jobId: job.id,
+        authors: job.volumeInfo.authors || ['No author'],
+        title: job.volumeInfo.title,
+        description: job.volumeInfo.description,
+        image: job.volumeInfo.imageLinks?.thumbnail || '',
+      })));
 
-      setSearchedBooks(bookData);
+      setSearchedJobs(jobData);
       setSearchInput('');
     } catch (err) {
       console.error(err);
     }
   };
 
-  // create function to handle saving a book to our database
-  const handleSaveBook = async (bookId) => {
-    // find the book in `searchedBooks` state by the matching id
-    const bookSaving = searchedBooks.find((book) => book.bookId === bookId);
+  // create function to handle saving a job to our database
+  const handleSaveJob = async (jobId) => {
+    // find the job in `searchedJobs` state by the matching id
+    const jobSaving = searchedJobs.find((job) => job.jobId === jobId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -72,11 +72,11 @@ const SearchBooks = () => {
     }
 
     try {
-      // imported SAVE_BOOK mutation
-     await saveBook({ variables: {book: bookSaving}});
+      // imported SAVE_JOB mutation
+     await saveJob({ variables: {job: jobSaving}});
 
-      // if book successfully saves to user's account, save book id to state
-      setSavedBookIds([...savedBookIds, bookSaving.bookId]);
+      // if job successfully saves to user's account, save job id to state
+      setSavedJobIds([...savedJobIds, jobSaving.jobId]);
     } catch (err) {
       console.error(err);
     }
@@ -86,7 +86,7 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for Jobs!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -96,7 +96,7 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Search for a book'
+                  placeholder='Search for a job'
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -111,29 +111,29 @@ const SearchBooks = () => {
 
       <Container>
         <h2>
-          {searchedBooks.length
-            ? `Viewing ${searchedBooks.length} results:`
-            : 'Search for a book to begin'}
+          {searchedJobs.length
+            ? `Viewing ${searchedJobs.length} results:`
+            : 'Search for a job to begin'}
         </h2>
         <CardColumns>
-          {searchedBooks.map((book) => {
+          {searchedJobs.map((job) => {
             return (
-              <Card key={book.bookId} border='dark'>
-                {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
+              <Card key={job.jobId} border='dark'>
+                {job.image ? (
+                  <Card.Img src={job.image} alt={`The cover for ${job.title}`} variant='top' />
                 ) : null}
                 <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
+                  <Card.Title>{job.title}</Card.Title>
+                  <p className='small'>Authors: {job.authors}</p>
+                  <Card.Text>{job.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+                      disabled={savedJobIds?.some((savedJobId) => savedJobId === job.jobId)}
                       className='btn-block btn-info'
-                      onClick={() => handleSaveBook(book.bookId)}>
-                      {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                        ? 'This book has already been saved!'
-                        : 'Save this Book!'}
+                      onClick={() => handleSaveJob(job.jobId)}>
+                      {savedJobIds?.some((savedJobId) => savedJobId === job.jobId)
+                        ? 'This job has already been saved!'
+                        : 'Save this Job!'}
                     </Button>
                   )}
                 </Card.Body>
@@ -146,4 +146,4 @@ const SearchBooks = () => {
   );
 };
 
-export default SearchBooks;
+export default SearchJobs;

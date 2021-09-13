@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import jobSearch from './jobSearch';
-// import './index.css';
+import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  // <React.StrictMode>
+<React.StrictMode>
     <App />,
-  // </React.StrictMode>,
+    </React.StrictMode>,
   document.getElementById('root'));
 
   export default function Indeed(url = 'http://api.indeed.com/ads', publisherId) {
@@ -22,4 +22,4 @@ ReactDOM.render(
 }
 
 
-// reportWebVitals();
+reportWebVitals();

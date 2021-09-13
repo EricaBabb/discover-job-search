@@ -3,10 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type Job {
         _id: ID
-        authors: [String]
         description: String
         JobId: String
-        image: String
         link: String
         title: String
     }
@@ -26,10 +24,8 @@ const typeDefs = gql`
         me: User
     }
     input jobToSave {
-        authors: [String]
         description: String
         jobId: String
-        image: String
         link: String
         title: String
     }

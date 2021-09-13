@@ -52,7 +52,7 @@ const resolvers = {
 
             throw new AuthenticationError('Need to be logged in to add a job to your list');
         },
-        removeBook: async (parent, args, context) => {
+        removeJob: async (parent, args, context) => {
             if (context.user) {
                 const userUpdate = await User.findOneAndUpdate(
                     { _id: context.user._id },

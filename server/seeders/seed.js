@@ -22,7 +22,7 @@ db.once('open', async () => {
   const createdUsers = await User.collection.insertMany(userData);
 
 
-  // create jobs
+  // create jobss
   let createdJobs = [];
   for (let i = 0; i < 100; i += 1) {
     const jobText = faker.lorem.words(Math.round(Math.random() * 10) + 1);

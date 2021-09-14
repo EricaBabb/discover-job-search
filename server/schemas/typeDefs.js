@@ -16,6 +16,12 @@ const typeDefs = gql`
         jobCount: Int
         savedJobs: [job]
     }
+    
+    type Auth {
+        token: ID!
+        user: User
+      }
+
     type Query {
         me: User
     }

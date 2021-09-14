@@ -30,7 +30,7 @@
     "graphql": "^15.5.3",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.5",
+    "mongoose": "^5.13.8",
     "mquery": "^4.0.0",
     "normalize-url": "^7.0.2",
     "react": "^17.0.2",

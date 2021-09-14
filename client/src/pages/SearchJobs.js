@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { searchGoogleJobs } from '../utils/API';
 import { saveJobIds, getSavedJobIds } from '../utils/localStorage';
+import { Indeed } from '../index';
 //Import useMutation hook from apollo
 import { useMutation } from '@apollo/react-hooks';
-//Import SAVE_BOOK mutation
-import { SAVE_BOOK } from '../utils/mutations';
+//Import SAVE_JOB mutation
+import { SAVE_JOB } from '../utils/mutations';
 
 const SearchJobs = () => {
   // create state for holding returned google api data
@@ -19,7 +19,7 @@ const SearchJobs = () => {
   const [savedJobIds, setSavedJobIds] = useState(getSavedJobIds());
 
   //Imported mutation
-  const [saveJob] = useMutation(SAVE_BOOK);
+  const [saveJob] = useMutation(SAVE_JOB);
 
   // set up useEffect hook to save `savedJobIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
@@ -36,7 +36,7 @@ const SearchJobs = () => {
     }
 
     try {
-      const response = await searchGoogleJobs(searchInput);
+      const response = await Indeed(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');

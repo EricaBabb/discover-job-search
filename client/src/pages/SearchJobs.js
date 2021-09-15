@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { Div, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../auth';
 import { saveJobIds, getSavedJobIds } from '../utils/localStorage';
@@ -84,11 +84,31 @@ const SearchJobs = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
-        <Container>
-          <h1>Search for Jobs!</h1>
+    <Container>
+          <h2 className="center body-text2">Start the search now . . .</h2>
           <Form onSubmit={handleFormSubmit}>
+          <Container className="form-flex">
             <Form.Row>
+              <Col xs={12} md={8}>
+                <Form.Control
+                  name='searchInput'
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type='text'
+                  size='lg'
+                  placeholder='Search for a job'
+                />
+              </Col>
+              <Col xs={12} md={8}>
+                <Form.Control
+                  name='searchInput'
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type='text'
+                  size='lg'
+                  placeholder='Search for a job'
+                />
+              </Col>
               <Col xs={12} md={8}>
                 <Form.Control
                   name='searchInput'
@@ -105,15 +125,15 @@ const SearchJobs = () => {
                 </Button>
               </Col>
             </Form.Row>
+            </Container>
           </Form>
-        </Container>
-      </Jumbotron>
+      </Container>
 
       <Container>
         <h2>
           {searchedJobs.length
             ? `Viewing ${searchedJobs.length} results:`
-            : 'Search for a job to begin'}
+            : ''}
         </h2>
         <CardColumns>
           {searchedJobs.map((job) => {

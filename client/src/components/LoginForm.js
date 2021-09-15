@@ -47,7 +47,8 @@ const LoginForm = () => {
       return (
         <>
           <Form className = "reg-font-color font-size left" noValidate validated={validated} onSubmit={handleFormSubmit}>
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'
+            className= "alert-space">
               Something went wrong with your login credentials!
             </Alert>
             <Form.Group>

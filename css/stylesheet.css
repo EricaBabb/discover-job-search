@@ -15,12 +15,12 @@
 
 @font-face {
   font-family: Ethnocentric;
-  src: url(./assets/EthnocentricItalic.otf);
+  src: url(./EthnocentricItalic.otf);
 }
 
 @font-face {
   font-family: Eurostile;
-  src: url(./assets/Eurostile.otf);
+  src: url(./Eurostile.otf);
 }
 .orange {
   color: var(--orange) !important;
@@ -30,7 +30,7 @@
 }
 
 body {
-  background-image: url("./assets/images/world.png");
+  background-image: url("/assets/images/world.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

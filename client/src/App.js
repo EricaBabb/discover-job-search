@@ -28,16 +28,17 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={SearchJobs} />
-            <Route exact path='/signup' component={SignupForms} />
-            <Route exact path='/login' component={LoginForm} />
-            <Route exact path='/saved' component={SavedJobs} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
+            <Route exact path="/" component={SearchJobs} />
+            <Route exact path="/signup" component={SignupForms} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/savedjobs" component={SavedJobs} />
+            <Route exact path="/search" component={SearchJobs} />
+            <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
         </>
       </Router>
     </ApolloProvider>
   );
-};
+}
 
 export default App;

@@ -21,11 +21,11 @@ export const removeJobId = (jobId) => {
             ('saved_jobs'))
         : null;
 
-    if (!savedJobIds) {
+    if (!jobId) {
         return false;
     }
 
-    const updatedSavedJobIds = savedJobIds?.
+    const updatedSavedJobIds = jobId?.
         filter((savedJobId) => savedJobId !==
             jobId);
     localStorage.setItem('saved_jobs', JSON.stringify(updatedSavedJobIds));

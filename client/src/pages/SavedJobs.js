@@ -56,7 +56,7 @@ const SavedJobs = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className='text-dark bold'>
         <Container>
           <h1>Viewing saved jobs!</h1>
         </Container>

@@ -1,46 +1,43 @@
 #discover-job-search
 
-Dicover
+Dicover Job Search
 
-Description
+## Description
 Discover erases job hunting stress by offering hundreds of job opportunities personalized to your needs! The user can signup to create an account. Once an account has been created, the user can log in and search the hundreds of job offerings. When a user finds a job they are interested in; they can save the job. Once the user applies for a job if they wish, they can delete the job.
 
-License Badge and Link (if applicable)
-License: MPL 2.0
-MPL-2.0 Link
 
-Table of Contents
-Description
-Installation
-Usage
-Deployed
-Screenshot
-Contributing
-Tests
-License
-Questions
-
-Installation
-The following has been installed to fun this app - Graphql, Apollo Server Express, React, Indeed API
-
-Usage
-npm start will allow the applcation to be deployed on the localhost, otherwise see our deployed website below
-
-Deployed Link
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Test](#test)
+- [Deployed](#deployed)
+- [Screenshot](#screenshot)
+- [Contributing](#contributing)
+- [Questions](#questions)
 
 
-Screenshot
+## Installation
+The following has been installed to fun this app - Graphql, Apollo Server, Express, React, Indeed API
 
+## Usage
+Start your local host with 'npm start', otherwise see our deployed website below.
 
-Contributing
-Erica Babb, Sean Conway, and Verna Heyne
+## License
+![MIT](https://img.shields.io/badge/license-MIT-green)
 
-Tests
+## Test
 localhost:3000
 
-License
-MPL-2.0
+## Deployed Link
+Heroku - https://cryptic-taiga-26271.herokuapp.com/
 
-Questions
+## Screenshot
+Image of our website - Discover-job-search
+
+## Contributing
+Erica Babb, Sean Conway, and Verna Heyne
+
+## Questions
 Github Page: [EricaBabb, seanway28, HeyneV] (https://github.com/EricaBabb/discover-job-search, seanway28, HeyneV)
-Email: ecamilebabb@gmail.com, seanway28@gmail.com, vkheyne@gmail.com, 
+Email: ecamilebabb@gmail.com, seanway28@gmail.com, vkheyne@gmail.com

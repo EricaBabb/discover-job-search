@@ -73,7 +73,7 @@ const SearchJobs = () => {
 
     try {
       // imported SAVE_BOOK mutation
-     await saveJob({ variables: {job: jobSaving}});
+      await saveJob({ variables: { job: jobSaving } });
 
       // if job successfully saves to user's account, save job id to state
       setSavedJobIds([...savedJobIds, jobSaving.jobId]);
@@ -147,3 +147,4 @@ const SearchJobs = () => {
 };
 
 export default SearchJobs;
+

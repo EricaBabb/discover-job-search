@@ -46,7 +46,7 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
 `;
 
 export const SAVE_JOB = gql`
-mutation saveJob($job: JobData!){
+mutation saveJob($job: jobSaving!){
   saveJob(job: $job){
      
      _id

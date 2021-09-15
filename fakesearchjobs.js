@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
-import Auth from '../auth';
+import Auth from '../utils/auth';
 import { saveJobIds, getSavedJobIds } from '../utils/localStorage';
-import { searchGoogleBooks } from '../utils/API';
+import { Indeed } from '../index';
 //Import useMutation hook from apollo
 import { useMutation } from '@apollo/react-hooks';
 //Import SAVE_JOB mutation
@@ -36,7 +36,7 @@ const SearchJobs = () => {
     }
 
     try {
-      const response = await searchGoogleBooks(searchInput);
+      const response = await Indeed(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');

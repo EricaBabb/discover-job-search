@@ -1,35 +1,30 @@
 export const getSavedJobIds = () => {
-    const getSavedJobIds = localStorage.getItem('saved_jobs')
-        ? JSON.parse(localStorage.getItem('saved_jobs'))
-        : [];
-
-
-    return getSavedJobIds;
-};
-
-export const saveJobIds = (jobIDArr) => {
-    if (jobIDArr.length) {
-        localStorage.setItem('saved_jobs', JSON.stringify(jobIDArr));
+    const savedJobIds = localStorage.getItem('saved_jobs')
+      ? JSON.parse(localStorage.getItem('saved_jobs'))
+      : [];
+  
+    return savedJobIds;
+  };
+  
+  export const saveJobIds = (jobIdArr) => {
+    if (jobIdArr.length) {
+      localStorage.setItem('saved_jobs', JSON.stringify(jobIdArr));
     } else {
-        localStorage.removeItem('saved_jobs');
+      localStorage.removeItem('saved_jobs');
     }
-};
-
-export const removeJobId = (jobId) => {
-    const saveJobIds = localStorage.getItem('saved_jobs')
-        ? JSON.parse(localStorage.getItem
-            ('saved_jobs'))
-        : null;
-
+  };
+  
+  export const removeJobId = (jobId) => {
+    const savedJobIds = localStorage.getItem('saved_jobs')
+      ? JSON.parse(localStorage.getItem('saved_jobs'))
+      : null;
+  
     if (!savedJobIds) {
-        return false;
+      return false;
     }
-
-    const updatedSavedJobIds = savedJobIds?.
-        filter((savedJobId) => savedJobId !==
-            jobId);
+  
+    const updatedSavedJobIds = savedJobIds?.filter((savedJobId) => savedJobId !== jobId);
     localStorage.setItem('saved_jobs', JSON.stringify(updatedSavedJobIds));
-
+  
     return true;
-
-};
+  };

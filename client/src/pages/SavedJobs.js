@@ -4,7 +4,7 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 import {useMutation, useQuery} from '@apollo/react-hooks';
 
 
-import Auth from '../utils/auth';
+import Auth from '../auth';
 import { removeJobId } from '../utils/localStorage';
 //Import REMOVE_JOB mutation and GET_ME query
 import { REMOVE_JOB } from '../utils/mutations';

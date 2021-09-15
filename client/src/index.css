@@ -36,6 +36,14 @@ body {
   background-size: cover;
 }
 
+a {
+  color: black !important;
+}
+
+a:hover {
+  color: var(--orange) !important;
+}
+
 /* Header */
 .center {
   display: flex;
@@ -65,10 +73,6 @@ nav {
 
 .nav-links {
   margin-top: 20px;
-}
-
-nav a:hover {
-  color: var(--orange) !important;
 }
 
 /* Body */

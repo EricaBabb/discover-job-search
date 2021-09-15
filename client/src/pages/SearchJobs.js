@@ -43,38 +43,6 @@ import $ from 'jquery';
             updateState({jobs: response.results})
         })
      }
-
-  //   function next(){
-  //         if (state.end >= 0 && state.start >= 0 && state.jobname && state.country) {
-  //              setState({...state ,start: state.end})
-  //              setState({...state ,end: state.end + 25})
-  //              setTimeout(()=>{
-  //                   getJobs()
-
-  //              }
-  //              ,500)
-  //         }
-  //         else{
-  //              setState({...state ,start: 0})
-  //              setState({...state ,end: 25})
-  //         }
-  //    }
-
-  // function   prev(){
-  //         if (state.end >= 0 && state.start >= 25 && state.jobname && state.country) {
-  //              updateState({...state ,start: state.start - 25})
-  //              updateState({...state ,end: state.end - 25})
-  //              setTimeout(()=>{
-  //                  getJobs()
-  //              }
-  //              ,500)
-  //         }
-  //         else{
-  //              setState({...state ,start: 0})
-  //              setState({...state ,end: 25})
-  //         }
-
-  //    }
  
           return (
            <div className="reg-font-color left">
@@ -349,12 +317,6 @@ import $ from 'jquery';
 
 
                 <div className="results">
-
-                     {/* <div>
-                          <button className={ state.start ? "" : "hidden" } onClick={ () => prev()}>prev</button>
-                          <button className={ state.jobs.length > 0 ? "" : "hidden" } onClick={ () => next()}>next</button>
-                     </div> */}
-
                      {
                           state.jobs.map( (value,index)=>{
                                return(
@@ -373,8 +335,6 @@ import $ from 'jquery';
                                )
                           })
                      }
-
-
                 </div>
            </div>
           );

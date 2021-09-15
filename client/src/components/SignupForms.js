@@ -50,7 +50,7 @@ const SignupForm = () => {
   return (
     <>
       {/* This is needed for the validation functionality above */}
-      <Form className = "reg-font-color" noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form className = "reg-font-color font-size left" noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
@@ -58,7 +58,7 @@ const SignupForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor='username' className="form-label">Username</Form.Label>
-          <Form.Control
+          <Form.Control className = "bottom"
             type='text'
             placeholder='Your username'
             name='username'
@@ -71,7 +71,7 @@ const SignupForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor='email' className="form-label">Email</Form.Label>
-          <Form.Control
+          <Form.Control className = "bottom"
             type='email'
             placeholder='Your email address'
             name='email'
@@ -84,7 +84,7 @@ const SignupForm = () => {
 
         <Form.Group>
           <Form.Label htmlFor='password' className="form-label">Password</Form.Label>
-          <Form.Control
+          <Form.Control className = "bottom"
             type='password'
             placeholder='Your password'
             name='password'

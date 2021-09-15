@@ -79,11 +79,11 @@ import $ from 'jquery';
           return (
            <div className="reg-font-color left">
              <h2 class="center body-text2">Start the search now . . .</h2>
-                <div className="">
+                <div className="bottom">
                      <div className="form-flex">
                           <input onChange={ e => updateState({jobname: e.target.value}) } className=" form-control space-top" id="jobname" placeholder="Job Field" type="text"  name="jobname"/>
                           <input onChange={ e => updateState({location: e.target.value}) } className=" form-control space-top" id="location" type="text" placeholder="Location"  name="location"/>
-                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="form-control form-width" id="country">
+                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="form-control form-width form-select" id="country">
                               <option>select country</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
@@ -358,13 +358,18 @@ import $ from 'jquery';
                      {
                           state.jobs.map( (value,index)=>{
                                return(
-                                    <div key={index} className="job">
-                                        <h4  > <a href={value.url} target="_blank"> TITLE : {value.jobtitle} </a> </h4>
-                                        <h4  > Location : {value.city}, {value.country} </h4>
-                                        <h4  > DATE : {value.date} </h4>
-                                        <h4  > POSTED : {value.formattedRelativeTime} </h4>
-                                        <h4  > DESCRIPTION : {value.snippet} </h4>
+                                <div key={index}>
+                                <div className="card border style-width" >
+                                  <div className="card-body">
+                                    <h5 className="card-title"><a href={value.url} target="_blank"> JOB : {value.jobtitle} </a> </h5>
+                                    <div className="card-body">
+                                    <h4  > DATE : {value.date} </h4>
+                                   <h4  > POSTED : {value.formattedRelativeTime} </h4>
+                                   <h4  > DESCRIPTION : {value.snippet} </h4>
                                     </div>
+                                  </div>
+                                </div>
+                              </div>
                                )
                           })
                      }

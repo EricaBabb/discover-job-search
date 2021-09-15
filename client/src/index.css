@@ -110,6 +110,9 @@ nav a:hover {
 .left {
   margin-left: 50px !important;
 }
+.bottom {
+  margin-bottom: 20px;
+}
 
 .space-top {
   margin-top: 20px;
@@ -118,6 +121,10 @@ nav a:hover {
 
 .form-width {
   width: 25% !important;
+}
+
+.style-width {
+  width: 18rem;
 }
 
 .form-control {
@@ -148,23 +155,12 @@ nav a:hover {
 .my-btn:hover {
   opacity: 0.75;
 }
-#split {
-  display: flex;
-}
-
-.absolute {
-  position: absolute;
-  margin-left: 50%;
-  margin-top: -20%;
-  margin-right: 10%;
-  font-size: 50px;
-}
 
 /* Cards */
 
 .card {
-  max-width: 600px !important;
-  max-height: 400px !important;
+  /* max-width: 600px !important;
+  max-height: 400px !important; */
 }
 
 .border {

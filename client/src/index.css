@@ -138,11 +138,18 @@ nav {
 .my-btn {
   font-family: Ethnocentric;
   font-size: 25px;
-  background-color: black;
+  background-color: black !important;
   padding: 5px;
-  color: white;
+  color: white !important;
   width: 50px;
   height: 40px;
+}
+
+.btn-size {
+  width: 150px;
+  border-color: black !important;
+  pointer-events: visibleFill !important;
+  opacity: 1 !important;
 }
 
 .my-btn a {
@@ -150,7 +157,7 @@ nav {
 }
 
 .my-btn:hover {
-  opacity: 0.75;
+  opacity: 0.75 !important;
 }
 
 /* Cards */

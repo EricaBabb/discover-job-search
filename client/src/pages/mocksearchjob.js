@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 // import './App.css';
 import $ from 'jquery';
+import {Button} from "react-bootstrap";
+import {getSavedJobIds} from "../utils/localStorage";
+import Auth from "../utils/auth";
+import {useMutation} from "@apollo/react-hooks";
+import {SAVE_JOB} from "../utils/mutations";
 
  function SearchJobs ()  {
+     const [searchedJobs, setSearchedJobs] = useState([]);
+
       const [state, setState]= useState({
         jobname: '',
         location: '',
@@ -10,7 +17,36 @@ import $ from 'jquery';
         start: 0,
         end: 25,
         jobs: []
-   })
+   });
+
+     // create state to hold saved jobId values
+     const [savedJobIds, setSavedJobIds] = useState(getSavedJobIds());
+
+     //Imported mutation
+     const [saveJob] = useMutation(SAVE_JOB);
+
+     // create function to handle saving a job to our database
+     const handleSaveJob = async (jobId) => {
+         // find the job in `searchedJobs` state by the matching id
+         const jobSaving = searchedJobs.find((job) => job.jobId === jobId);
+
+         // get token
+         const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+         if (!token) {
+             return false;
+         }
+
+         try {
+             // imported SAVE_BOOK mutation
+             await saveJob({ variables: { job: jobSaving } });
+
+             // if job successfully saves to user's account, save job id to state
+             setSavedJobIds([...savedJobIds, jobSaving.jobId]);
+         } catch (err) {
+             console.error(err);
+         }
+     };
            
          
     
@@ -43,15 +79,46 @@ import $ from 'jquery';
             updateState({jobs: response.results})
         })
      }
+
+    function next(){
+          if (state.end >= 0 && state.start >= 0 && state.jobname && state.country) {
+               setState({...state ,start: state.end})
+               setState({...state ,end: state.end + 25})
+               setTimeout(()=>{
+                    getJobs()
+
+               }
+               ,500)
+          }
+          else{
+               setState({...state ,start: 0})
+               setState({...state ,end: 25})
+          }
+     }
+
+  function   prev(){
+          if (state.end >= 0 && state.start >= 25 && state.jobname && state.country) {
+               updateState({...state ,start: state.start - 25})
+               updateState({...state ,end: state.end - 25})
+               setTimeout(()=>{
+                   getJobs()
+               }
+               ,500)
+          }
+          else{
+               setState({...state ,start: 0})
+               setState({...state ,end: 25})
+          }
+
+     }
  
           return (
-           <div className="reg-font-color left">
-             <h2 class="center body-text2">Start the search now . . .</h2>
-                <div className="bottom">
-                     <div className="form-flex">
-                          <input onChange={ e => updateState({jobname: e.target.value}) } className=" form-control space-top" id="jobname" placeholder="Job Field" type="text"  name="jobname"/>
-                          <input onChange={ e => updateState({location: e.target.value}) } className=" form-control space-top" id="location" type="text" placeholder="Location"  name="location"/>
-                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="form-control form-width form-select" id="country">
+           <div className="App">
+                <div className="search">
+                     <div className="overlay">
+                          <input onChange={ e => updateState({jobname: e.target.value}) } className="jobname" id="jobname" placeholder="jobname" type="text"  name="jobname"/>
+                          <input onChange={ e => updateState({location: e.target.value}) } className="location" id="location" type="text" placeholder="location"  name="location"/>
+                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="country" id="country">
                               <option>select country</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
@@ -308,7 +375,7 @@ import $ from 'jquery';
                                     updateState({start: 0})
                                     updateState({end: 25})
                           }} type="submit" id="searchButton" value="Find Jobs" className="">
-                              <a href="#1"><i className="my-btn" aria-hidden="true">Search</i></a>
+                              <a href="#1"><i className="fa fa-search" aria-hidden="true"></i>SEARCH</a>
                          </button>
                      </div>
 
@@ -317,24 +384,32 @@ import $ from 'jquery';
 
 
                 <div className="results">
+
+
+
                      {
                           state.jobs.map( (value,index)=>{
                                return(
-                                <div key={index}>
-                                <div className="card border style-width" >
-                                  <div className="card-body">
-                                    <h5 className="card-title"><a href={value.url} target="_blank"> JOB : {value.jobtitle} </a> </h5>
-                                    <div className="card-body">
-                                    <h4  > DATE : {value.date} </h4>
-                                   <h4  > POSTED : {value.formattedRelativeTime} </h4>
-                                   <h4  > DESCRIPTION : {value.snippet} </h4>
+                                    <div key={index} className="job">
+                                        <h4  > <a href={value.url} target="_blank"> TITLE : {value.jobtitle} </a> </h4>
+                                        <h4  > Location : {value.city}, {value.country} </h4>
+                                        <h4  > DATE : {value.date} </h4>
+                                        <h4  > POSTED : {value.formattedRelativeTime} </h4>
+                                        <h4  > DESCRIPTION : {value.snippet} </h4>
+                                        <Button
+                                            disabled={savedJobIds?.some((savedJobId) => savedJobId === value.jobId)}
+                                            className='btn-block btn-info'
+                                            onClick={() => handleSaveJob(value.jobId)}>
+                                            {savedJobIds?.some((savedJobId) => savedJobId === value.jobId)
+                                                ? 'This job has already been saved!'
+                                                : 'Save this Job!'}
+                                        </Button>
                                     </div>
-                                  </div>
-                                </div>
-                              </div>
                                )
                           })
                      }
+
+
                 </div>
            </div>
           );

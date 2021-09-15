@@ -124,7 +124,6 @@ nav a:hover {
 }
 
 .style-width {
-  width: 18rem;
 }
 
 .form-control {
@@ -159,8 +158,8 @@ nav a:hover {
 /* Cards */
 
 .card {
-  /* max-width: 600px !important;
-  max-height: 400px !important; */
+  margin-right: 50px;
+  margin-bottom: 10px;
 }
 
 .border {

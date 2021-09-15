@@ -107,30 +107,23 @@ nav a:hover {
 
 /* Search */
 
-form {
-  margin-left: 50px;
-}
-.form-label {
-  font-size: 25px;
+.left {
+  margin-left: 50px !important;
 }
 
-.field-form {
-  width: 40%;
+.space-top {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .form-width {
-  width: 30%;
+  width: 25% !important;
 }
 
-.form-select {
-  width: 180%;
+.form-control {
+  width: 40%;
   font-family: Eurostile;
   color: black;
-}
-.label-center {
-  display: flex;
-  justify-content: center;
-  margin-left: -35vw;
 }
 
 .form-flex {
@@ -142,8 +135,10 @@ form {
   font-family: Ethnocentric;
   font-size: 25px;
   background-color: black;
+  padding: 5px;
   color: white;
-  margin-top: 30px;
+  width: 50px;
+  height: 40px;
 }
 
 .my-btn a {

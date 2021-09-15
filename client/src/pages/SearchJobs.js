@@ -44,45 +44,46 @@ import $ from 'jquery';
         })
      }
 
-    function next(){
-          if (state.end >= 0 && state.start >= 0 && state.jobname && state.country) {
-               setState({...state ,start: state.end})
-               setState({...state ,end: state.end + 25})
-               setTimeout(()=>{
-                    getJobs()
+  //   function next(){
+  //         if (state.end >= 0 && state.start >= 0 && state.jobname && state.country) {
+  //              setState({...state ,start: state.end})
+  //              setState({...state ,end: state.end + 25})
+  //              setTimeout(()=>{
+  //                   getJobs()
 
-               }
-               ,500)
-          }
-          else{
-               setState({...state ,start: 0})
-               setState({...state ,end: 25})
-          }
-     }
+  //              }
+  //              ,500)
+  //         }
+  //         else{
+  //              setState({...state ,start: 0})
+  //              setState({...state ,end: 25})
+  //         }
+  //    }
 
-  function   prev(){
-          if (state.end >= 0 && state.start >= 25 && state.jobname && state.country) {
-               updateState({...state ,start: state.start - 25})
-               updateState({...state ,end: state.end - 25})
-               setTimeout(()=>{
-                   getJobs()
-               }
-               ,500)
-          }
-          else{
-               setState({...state ,start: 0})
-               setState({...state ,end: 25})
-          }
+  // function   prev(){
+  //         if (state.end >= 0 && state.start >= 25 && state.jobname && state.country) {
+  //              updateState({...state ,start: state.start - 25})
+  //              updateState({...state ,end: state.end - 25})
+  //              setTimeout(()=>{
+  //                  getJobs()
+  //              }
+  //              ,500)
+  //         }
+  //         else{
+  //              setState({...state ,start: 0})
+  //              setState({...state ,end: 25})
+  //         }
 
-     }
+  //    }
  
           return (
-           <div className="App">
-                <div className="search">
-                     <div className="overlay">
-                          <input onChange={ e => updateState({jobname: e.target.value}) } className="jobname" id="jobname" placeholder="jobname" type="text"  name="jobname"/>
-                          <input onChange={ e => updateState({location: e.target.value}) } className="location" id="location" type="text" placeholder="location"  name="location"/>
-                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="country" id="country">
+           <div className="reg-font-color left">
+             <h2 class="center body-text2">Start the search now . . .</h2>
+                <div className="">
+                     <div className="form-flex">
+                          <input onChange={ e => updateState({jobname: e.target.value}) } className=" form-control space-top" id="jobname" placeholder="Job Field" type="text"  name="jobname"/>
+                          <input onChange={ e => updateState({location: e.target.value}) } className=" form-control space-top" id="location" type="text" placeholder="Location"  name="location"/>
+                          <select onChange={ e => updateState({country: e.target.value}) } name="country" className="form-control form-width" id="country">
                               <option>select country</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
@@ -339,7 +340,7 @@ import $ from 'jquery';
                                     updateState({start: 0})
                                     updateState({end: 25})
                           }} type="submit" id="searchButton" value="Find Jobs" className="">
-                              <a href="#1"><i className="fa fa-search" aria-hidden="true"></i></a>
+                              <a href="#1"><i className="my-btn" aria-hidden="true">Search</i></a>
                          </button>
                      </div>
 
@@ -349,10 +350,10 @@ import $ from 'jquery';
 
                 <div className="results">
 
-                     <div>
+                     {/* <div>
                           <button className={ state.start ? "" : "hidden" } onClick={ () => prev()}>prev</button>
                           <button className={ state.jobs.length > 0 ? "" : "hidden" } onClick={ () => next()}>next</button>
-                     </div>
+                     </div> */}
 
                      {
                           state.jobs.map( (value,index)=>{

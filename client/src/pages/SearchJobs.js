@@ -37,7 +37,7 @@ import $ from 'jquery';
             dataType: 'jsonp',
             type: 'GET',
             timeout: 5000,
-            url: 'http://api.indeed.com/ads/apisearch'
+            url: 'https://api.indeed.com/ads/apisearch'
         })
         .done(function( response ) {
             updateState({jobs: response.results})

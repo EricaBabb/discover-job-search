@@ -95,7 +95,7 @@ function(module, exports, __webpack_require__) {
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function Indeed() {
-		var url = arguments.length <= 0 || arguments[0] === undefined ? 'http://api.indeed.com/ads' : arguments[0];
+		var url = arguments.length <= 0 || arguments[0] === undefined ? 'https://api.indeed.com/ads' : arguments[0];
 		var publisherId = arguments[1];
 	
 		if (!publisherId) {

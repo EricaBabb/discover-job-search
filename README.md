@@ -22,7 +22,7 @@ The following has been installed to run this app - Graphql, Apollo Server, Expre
 
 Start your local host with 'npm start', otherwise see our deployed website below.
 
-![](./discover/client/src/assets/images/Discover.png)
+![](./client/src/assets/images/Discover.png)
 
 ## License
 

@@ -1,35 +1,35 @@
-export const getSavedJobIds = () => {
-    const getSavedJobIds = localStorage.getItem('saved_jobs')
-        ? JSON.parse(localStorage.getItem('saved_jobs'))
-        : [];
+// export const getSavedJobIds = () => {
+//     const getSavedJobIds = localStorage.getItem('saved_jobs')
+//         ? JSON.parse(localStorage.getItem('saved_jobs'))
+//         : [];
 
 
-    return getSavedJobIds;
-};
+//     return getSavedJobIds;
+// };
 
-export const saveJobIds = (jobIDArr) => {
-    if (jobIDArr.length) {
-        localStorage.setItem('saved_jobs', JSON.stringify(jobIDArr));
-    } else {
-        localStorage.removeItem('saved_jobs');
-    }
-};
+// export const saveJobIds = (jobIDArr) => {
+//     if (jobIDArr.length) {
+//         localStorage.setItem('saved_jobs', JSON.stringify(jobIDArr));
+//     } else {
+//         localStorage.removeItem('saved_jobs');
+//     }
+// };
 
-export const removeJobId = (jobId) => {
-    const saveJobIds = localStorage.getItem('saved_jobs')
-        ? JSON.parse(localStorage.getItem
-            ('saved_jobs'))
-        : null;
+// export const removeJobId = (jobId) => {
+//     const saveJobIds = localStorage.getItem('saved_jobs')
+//         ? JSON.parse(localStorage.getItem
+//             ('saved_jobs'))
+//         : null;
 
-    if (!jobId) {
-        return false;
-    }
+//     if (!jobId) {
+//         return false;
+//     }
 
-    const updatedSavedJobIds = jobId?.
-        filter((savedJobId) => savedJobId !==
-            jobId);
-    localStorage.setItem('saved_jobs', JSON.stringify(updatedSavedJobIds));
+//     const updatedSavedJobIds = jobId?.
+//         filter((savedJobId) => savedJobId !==
+//             jobId);
+//     localStorage.setItem('saved_jobs', JSON.stringify(updatedSavedJobIds));
 
-    return true;
+//     return true;
 
-};
+// };
